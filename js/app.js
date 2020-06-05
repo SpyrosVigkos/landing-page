@@ -20,6 +20,7 @@
 const sections = document.querySelectorAll("section");
 const navList = document.getElementById("navbar__list");
 const navLinks = document.querySelectorAll('.menu__link');
+const header = document.getElementsByClassName("page__header")[0];
 const sectionsID = [];
 
 
@@ -75,6 +76,7 @@ function createNavMenu() {
         a.href = `#section${i + 1}`;
 
         li.appendChild(a);
+
     }
     
         
@@ -84,7 +86,7 @@ function createNavMenu() {
 
 // Add class 'active' to section when near top of viewport
 
-const activeClass = document.addEventListener('scroll', function () {
+const activeClass = document.addEventListener('scroll',  () => {
     
     
     for (const section of sections) {
@@ -95,15 +97,13 @@ const activeClass = document.addEventListener('scroll', function () {
             
             const id = section.getAttribute("id");
             // querySelector() returns the first Element within the document that matches the specified selector.
-            document.querySelector(`.${id}`).classList.add("active")
-            section.classList.add('your-active-class')
-            
-            
-            this.console.log(navLinks[i]);
+            document.querySelector(`.${id}`).classList.add("active");
+            section.classList.add('your-active-class');
             
         } else {
             
             section.classList.remove('your-active-class');
+            
             const id = section.getAttribute("id");
             document.querySelector(`.${id}`).classList.remove("active")
             
@@ -111,8 +111,28 @@ const activeClass = document.addEventListener('scroll', function () {
     }
 });
 
+// hide the navbar when upscroll 
+
+var scrollPos = 0;
+
+window.addEventListener('scroll', function(){
+  // detects new state and compares it with the new one
+  if (((document.body.getBoundingClientRect()).top >= scrollPos) && 
+        !sections[0].classList.contains('your-active-class') && 
+        (document.body.getBoundingClientRect()).top <= 0 )
+
+        document.querySelector(".page__header").style.cssText = "display: none;";
+
+    else
+		
+        document.querySelector(".page__header").style.cssText = "display: block;";
+	// saves the new position for iteration.
+	scrollPos = (document.body.getBoundingClientRect()).top ;
+});
 
 // Scroll to anchor ID using scrollTO event
+
+// adding scroll event
 
 
 /**
