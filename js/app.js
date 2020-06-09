@@ -20,8 +20,11 @@
 const sections = document.querySelectorAll("section");
 const navList = document.getElementById("navbar__list");
 const navLinks = document.querySelectorAll('.menu__link');
+const navAnchors = document.querySelectorAll('a');
 const header = document.getElementsByClassName("page__header")[0];
 const sectionsID = [];
+
+
 
 
 
@@ -76,6 +79,7 @@ function createNavMenu() {
         a.href = `#section${i + 1}`;
 
         li.appendChild(a);
+        
 
     }
     
@@ -108,31 +112,51 @@ const activeClass = document.addEventListener('scroll',  () => {
             document.querySelector(`.${id}`).classList.remove("active")
             
         }
+
+       
     }
 });
 
-// hide the navbar when upscroll 
 
-var scrollPos = 0;
+// Scroll to anchor ID using scrollTO event
+function scrollToId (){
+    const anchors = document.getElementsByTagName('a')
+    for (let i = 0; i < sections.length; i++) {
+        
+        let element = sections[i];
+        let anchor = anchors[i];
+        const top = element.getBoundingClientRect().top + window.pageYOffset;
+
+        console.log("anchor", anchor)
+        console.log("top", top)
+    
+        anchor.addEventListener('click', () => window.scroll({top, behavior: 'smooth'}))
+        
+    }
+
+}
+
+
+// adding scroll event
+
+//hide the navbar when scroll to top except first section
+
+let scrollPos = 0;
 
 window.addEventListener('scroll', function(){
-  // detects new state and compares it with the new one
-  if (((document.body.getBoundingClientRect()).top >= scrollPos) && 
+    // detects new state and compares it with the new one
+    if (((document.body.getBoundingClientRect()).top >= scrollPos) && 
         !sections[0].classList.contains('your-active-class') && 
         (document.body.getBoundingClientRect()).top <= 0 )
 
         document.querySelector(".page__header").style.cssText = "display: none;";
 
     else
-		
+        
         document.querySelector(".page__header").style.cssText = "display: block;";
-	// saves the new position for iteration.
-	scrollPos = (document.body.getBoundingClientRect()).top ;
+    // saves the new position for iteration.
+    scrollPos = (document.body.getBoundingClientRect()).top ;
 });
-
-// Scroll to anchor ID using scrollTO event
-
-// adding scroll event
 
 
 /**
@@ -145,6 +169,7 @@ window.addEventListener('scroll', function(){
 createNavMenu();
 
 // Scroll to section on link click
+scrollToId();
 
 // Set sections as active
 activeClass();
