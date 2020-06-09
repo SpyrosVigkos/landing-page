@@ -110,28 +110,20 @@ const activeClass = document.addEventListener('scroll',  () => {
 
 
 function scrollToId (){
-    const anchors = document.getElementsByTagName('a')
-    for (let i = 0; i < sectionsID.length; i++) {
-        
-        let element = document.querySelector(sectionsID[i]);
-        
-        let anchor = anchors[i];
-        const top = element.getBoundingClientRect().top + window.pageYOffset;
-        
-        // console.log("anchor", anchor)
-        // console.log("top", top)
-        
-        anchor.addEventListener('click', () => 
-        
-        // element.scrollIntoView({ behavior: 'smooth', block: 'end'})
-        // window.scroll({top, behavior: 'smooth'})
-        element.scrollIntoView({top, behavior: 'smooth'})
 
-        
-        )
-        
-    }
+    //according my mentor https://knowledge.udacity.com/questions/226271
+    
+    document.querySelectorAll('.navbar__menu a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 
+
+   
 }
 
 
