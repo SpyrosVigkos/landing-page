@@ -17,17 +17,13 @@
  * Define Global Variables
  * 
  */
+
 const sections = document.querySelectorAll("section");
 const navList = document.getElementById("navbar__list");
 const navLinks = document.querySelectorAll('.menu__link');
 const navAnchors = document.querySelectorAll('a');
 const header = document.getElementsByClassName("page__header")[0];
 const sectionsID = [];
-
-
-
-
-
 
 
 /**
@@ -100,20 +96,17 @@ const activeClass = document.addEventListener('scroll',  () => {
         if (element.top <= 150 && element.bottom >= 150) { 
             
             const id = section.getAttribute("id");
-            // querySelector() returns the first Element within the document that matches the specified selector.
-            document.querySelector(`.${id}`).classList.add("active");
+            document.querySelector(`.${id}`).classList.add("active"); // querySelector() returns the first Element within the document that matches the specified selector.
             section.classList.add('your-active-class');
             
         } else {
             
             section.classList.remove('your-active-class');
-            
             const id = section.getAttribute("id");
             document.querySelector(`.${id}`).classList.remove("active")
             
         }
 
-       
     }
 });
 
