@@ -39,11 +39,6 @@ for(let i = 1; i <= sections.length; i++){
     
 }
 
-
-                    
-                    
-                    
-                    
             
 /**
  * End Helper Functions
@@ -112,18 +107,28 @@ const activeClass = document.addEventListener('scroll',  () => {
 
 
 // Scroll to anchor ID using scrollTO event
+
+
 function scrollToId (){
     const anchors = document.getElementsByTagName('a')
-    for (let i = 0; i < sections.length; i++) {
+    for (let i = 0; i < sectionsID.length; i++) {
         
-        let element = sections[i];
+        let element = document.querySelector(sectionsID[i]);
+        
         let anchor = anchors[i];
         const top = element.getBoundingClientRect().top + window.pageYOffset;
+        
+        // console.log("anchor", anchor)
+        // console.log("top", top)
+        
+        anchor.addEventListener('click', () => 
+        
+        // element.scrollIntoView({ behavior: 'smooth', block: 'end'})
+        // window.scroll({top, behavior: 'smooth'})
+        element.scrollIntoView({top, behavior: 'smooth'})
 
-        console.log("anchor", anchor)
-        console.log("top", top)
-    
-        anchor.addEventListener('click', () => window.scroll({top, behavior: 'smooth'}))
+        
+        )
         
     }
 
