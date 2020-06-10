@@ -50,9 +50,9 @@ for(let i = 1; i <= sections.length; i++){
 function createNavMenu() {
 
         
-    for(let i = 0; i <= sections.length; i++){
+    for(let i = 0; i < sections.length; i++){
         const section = sections[i];
-
+        console.log(sections[i])
         const li = document.createElement('li');
         const a = document.createElement('a');
         
