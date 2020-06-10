@@ -50,11 +50,12 @@ for(let i = 1; i <= sections.length; i++){
 function createNavMenu() {
 
         
-    for(let i = 0; i <= sections.length; i++){
+    for(let i = 0; i < sections.length; i++){
         const section = sections[i];
 
         const li = document.createElement('li');
         const a = document.createElement('a');
+        console.log(sections[i]);
         
         li.classList.add(sections[i].getAttribute('id'));
         navList.appendChild(li);
@@ -93,6 +94,13 @@ const activeClass = document.addEventListener('scroll',  () => {
             const id = section.getAttribute("id");
             document.querySelector(`.${id}`).classList.add("active"); // querySelector() returns the first Element within the document that matches the specified selector.
             section.classList.add('your-active-class');
+
+            // Show the active section on Navigation Bar on Responsive Menu
+
+            let dataSet = section.getAttribute('data-nav');
+            let activePar = document.getElementById("activeSection");
+            activePar.innerText = dataSet;
+
             
         } else {
             

@@ -8,6 +8,7 @@
   <!-- Load Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap" rel="stylesheet">  <!-- Load Styles -->
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   
 </head>
 <body>
@@ -15,6 +16,21 @@
   IDs are only used for sections to connect menu achors to sections -->
   <header class="page__header">
     <nav class="navbar__menu">
+      <!-- Add Hamburger menu from vigkos.com -->
+
+      
+      <input type="checkbox" name="" id="check">
+
+      <label for="check" class="burgerbtn">
+
+          <i class="fas fa-bars"></i>
+
+      </label>
+
+      <!-- <p id="activeSection"></p> -->
+      <p id="activeSection"></p>
+
+    
       <!-- Navigation starts as empty UL that will be populated with JS -->
       <ul id="navbar__list"></ul>
     </nav>
