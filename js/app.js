@@ -52,7 +52,7 @@ function createNavMenu() {
         
     for(let i = 0; i < sections.length; i++){
         const section = sections[i];
-
+        console.log(sections[i])
         const li = document.createElement('li');
         const a = document.createElement('a');
         console.log(sections[i]);
